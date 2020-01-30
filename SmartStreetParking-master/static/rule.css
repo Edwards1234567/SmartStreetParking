@@ -1,0 +1,20 @@
+/*
+ * written by andrewt@cse.unsw.edu.au October 2017
+ * as a starting point for COMP[29]041 assignment 2
+ * https://cgi.cse.unsw.edu.au/~cs2041/assignments/UNSWtalk/
+ *
+ * Change (or replace) the CSS below to create you own look-and-feel
+ *
+ * You will probably want to add  CSS to this file too
+ */
+
+.main{
+    text-align: center
+    background-color: #fff;
+
+    margin: 0 auto;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+    position: relative;
+
+}

@@ -1,0 +1,526 @@
+<html lang = "en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content = "width=device-width,
+  initial-scale = 1.0">
+  <meta http-equiv="X-UA-Compatible" content = "ie=edge">
+{
+  <title>{{ spots }}</title>
+}
+  <style>
+    #map{
+      height:600px;
+      width:80%;
+      margin: 0 auto;
+    }
+
+      iframe{
+          display: block;
+          margin: 0 auto;
+      }
+  </style>
+</head>
+{% extends "base.html" %}
+{% block body_contents %}
+<body>
+ {# <h1>My Google Map</h1>#}
+ <br>
+ <br>
+ <br>
+ <br>
+  <div id="map" ></div>
+  <script >
+    function initMap(){
+      //map options
+      var options = {
+        zoom:18,
+        {#center:{lat: -33.9211644, lng: 151.2297743},#}
+         center:{lat: -33.9194993385, lng: 151.230814223},
+      }
+      // New map
+      var map = new google.maps.Map(document.getElementById('map'),options);
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// InfoWindow information -- for point
+  var contentString = '<div id="content">'+'<div id="siteNotice">'+'</div>'+
+    '<h1 id="firstHeading" class="firstHeading"><b>Free: </b> <b>{{ vacant_number }}</b></h1>'+
+    '<div id="bodyContent">'+
+{#    '<p><b>Free: </b> <b>{{ number }}</b></p>'+#}
+    '<p><b>Location: </b>lat: -33.9211644, lng: 151.2297743</p>'+
+    '<p><b>released soon: </b> 1</p>'+
+    '<p><b>Total: </b> 5</p>'
+    '</div>'+
+    '</div>';
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Car Parking Space
+var ParkingLocation_1 = [{lat: -33.92116759, lng: 151.2296184},
+                      {lat: -33.92117104, lng: 151.2296446},
+                      {lat: -33.92112319, lng: 151.2296542},
+                      {lat: -33.9211196, lng: 151.2296279}
+                      ];
+var ParkingLocation_2 = [{lat: -33.92117104, lng: 151.2296446},
+                        {lat: -33.92112319, lng: 151.2296542},
+                        {lat: -33.92112692, lng: 151.2296807},
+                        {lat: -33.92117455, lng: 151.2296715}
+                      ];
+var ParkingLocation_3 = [{lat: -33.92117455, lng: 151.2296715},
+                        {lat: -33.92117814, lng: 151.229698},
+                        {lat: -33.92113069, lng: 151.2297074},
+                        {lat: -33.92112692, lng: 151.2296807}
+                        ];
+var ParkingLocation_4 = [{lat: -33.92117814, lng: 151.229698},
+                        {lat: -33.92113069, lng: 151.2297074},
+                        {lat: -33.92113434, lng: 151.2297342},
+                        {lat: -33.92118181, lng: 151.2297247}
+                        ];
+var ParkingLocation_5 = [{lat: -33.92113434, lng: 151.2297342},
+                        {lat: -33.92118181, lng: 151.2297247},
+                        {lat: -33.92118528, lng: 151.2297514},
+                        {lat: -33.92113808, lng: 151.2297607}
+                        ];
+var ParkingLocation_6 = [{lat: -33.92118528, lng: 151.2297514},
+                        {lat: -33.92113808, lng: 151.2297607},
+                        {lat: -33.92114181, lng: 151.2297874},
+                        {lat: -33.92118907, lng: 151.2297781}
+                        ];
+var ParkingLocation_7 = [{lat: -33.92114181, lng: 151.2297874},
+                        {lat: -33.92118907, lng: 151.2297781},
+                        {lat: -33.92119266, lng: 151.2298048},
+                        {lat: -33.92114549, lng: 151.2298142}
+                        ];
+var ParkingLocation_8 = [{lat: -33.92119266, lng: 151.2298048},
+                        {lat: -33.92114549, lng: 151.2298142},
+                        {lat: -33.92114923, lng: 151.2298408},
+                        {lat: -33.9211963, lng: 151.2298315}
+                        ];
+var ParkingLocation_9 = [{lat: -33.92114923, lng: 151.2298408},
+                        {lat: -33.9211963, lng: 151.2298315},
+                        {lat: -33.9211999, lng: 151.2298582},
+                        {lat: -33.92115285, lng: 151.2298674}
+                        ];
+var ParkingLocation_10 = [{lat: -33.9211999, lng: 151.2298582},
+                        {lat: -33.92115285, lng: 151.2298674},
+                        {lat: -33.92115655, lng: 151.2298941},
+                        {lat: -33.92120346, lng: 151.2298848}
+                        ];
+var ParkingLocation_11 = [{lat: -33.92115655, lng: 151.2298941},
+                        {lat: -33.92120346, lng: 151.2298848},
+                        {lat: -33.92120717, lng: 151.2299114},
+                        {lat: -33.92116028, lng: 151.2299208}
+                        ];
+var ParkingLocation_12 = [{lat: -33.92120717, lng: 151.2299114},
+                        {lat: -33.92116028, lng: 151.2299208},
+                        {lat: -33.92116304, lng: 151.2299414},
+                        {lat: -33.92121013, lng: 151.2299332}
+                        ];
+
+var ParkingLocation_01 = [{lat: -33.9194993385, lng: 151.230814223},
+                      {lat: -33.919507846, lng: 151.230867849},
+                      {lat: -33.9195294604, lng: 151.230863432},
+                      {lat: -33.9195208752, lng: 151.230809419}
+                      ];
+var ParkingLocation_02 = [{lat: -33.9195294604, lng: 151.230863432},
+                      {lat: -33.9195208752, lng: 151.230809419},
+                      {lat: -33.9195426667, lng: 151.230804782},
+                      {lat: -33.9195508351, lng: 151.23085928}
+                      ];
+var ParkingLocation_03 = [{lat: -33.9195426667, lng: 151.230804782},
+                      {lat: -33.9195508351, lng: 151.23085928},
+                      {lat: -33.9195728116, lng: 151.230854964},
+                      {lat: -33.9195644188, lng: 151.230800536}
+                      ];
+var ParkingLocation_04 = [{lat: -33.9195728116, lng: 151.230854964},
+                      {lat: -33.9195644188, lng: 151.230800536},
+                      {lat: -33.9195863762, lng: 151.230796145},
+                      {lat: -33.9195941683, lng: 151.230850813}
+                      ];
+var ParkingLocation_05 = [{lat: -33.9195863762, lng: 151.230796145},
+                      {lat: -33.9195941683, lng: 151.230850813},
+                      {lat: -33.9196158402, lng: 151.230846633},
+                      {lat: -33.9196079666, lng: 151.230791945}
+                      ];
+var ParkingLocation_06 = [{lat: -33.9196158402, lng: 151.230846633},
+                      {lat: -33.9196079666, lng: 151.230791945},
+                      {lat: -33.9196298672, lng: 151.230787243},
+                      {lat: -33.9196376022, lng: 151.230842451}
+                      ];
+
+var ParkingLocations = [ParkingLocation_01, ParkingLocation_02, ParkingLocation_03,
+                        ParkingLocation_04, ParkingLocation_05, ParkingLocation_06]
+
+// Construct the polygon.
+
+/* failed to make infoWindow for polygon(1/2)
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_1,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+
+// Add a listener for the click event.
+        ParkingSpace.addListener('click', showArrays);
+        new_infoWindow = new google.maps.InfoWindow;
+*/
+
+infoWindow = new google.maps.InfoWindow;
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_2,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+          });
+          ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_3,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_4,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_5,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_6,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_7,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_8,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_9,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_10,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_11,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_12,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+
+
+
+for(var i=0;i < {{ total_number }};i++){
+    // Add spots
+    if ({{ spots }}[i] ==1 ){
+        var ParkingSpace = new google.maps.Polygon({
+              paths: ParkingLocations[i],
+              strokeColor: '#238E23',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#ff0000',
+              fillOpacity: 0.35
+            });
+            ParkingSpace.setMap(map);
+    }
+    else{
+        var ParkingSpace = new google.maps.Polygon({
+              paths: ParkingLocations[i],
+              strokeColor: '#238E23',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#238E23',
+              fillOpacity: 0.35
+            });
+            ParkingSpace.setMap(map);
+    }
+  }
+
+
+
+
+{#
+
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_02,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_03,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_04,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_05,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+
+
+var ParkingSpace = new google.maps.Polygon({
+          paths: ParkingLocation_06,
+          strokeColor: '#238E23',
+          strokeOpacity: 0.8,
+          strokeWeight: 2,
+          fillColor: '#238E23',
+          fillOpacity: 0.35
+        });
+        ParkingSpace.setMap(map);
+#}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Marker (real one and the fake one)
+  //Array of markers
+  var markers = [
+     {
+      coords:{lat: -33.9195928116, lng: 151.230824964},
+      label_:'{{ vacant_number }}'  //could give the link of rest space
+    },
+
+    {
+      coords:{lat: -33.9211644, lng: 151.2297743},
+      label_:'4'
+
+    },
+    {
+      coords:{lat: -33.920835, lng: 151.2301041},
+      label_:'1'
+    },
+
+    {
+      coords:{lat: -33.9204032, lng: 151.2302168},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9203965, lng: 151.2290581},
+      label_:'1'
+    },
+
+    {
+      coords:{lat: -33.9197088, lng: 151.2288757},
+      label_:'1'
+    },
+{#    {
+      coords:{lat: -33.9211644, lng: 151.2297743},
+      iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+      label_:'{{ number }}'  //could give the link of rest space
+
+    },
+    {
+      coords:{lat: -33.9210687, lng: 151.2291654},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9210286, lng: 151.2287791},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.920835, lng: 151.2301041},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9208795, lng: 151.2302436},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9204032, lng: 151.2302168},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9202296, lng: 151.2303455},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9204544, lng: 151.2294604},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9203965, lng: 151.2290581},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9203253, lng: 151.2284519},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9198802, lng: 151.2296052},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.9197088, lng: 151.2288757},
+      label_:'1'
+    },
+    {
+      coords:{lat: -33.919622, lng: 151.22828},
+      label_:'1'
+    },#}
+  ];
+  //Loop through markers
+  for(var i=0;i<markers.length;i++){
+    // Add marker
+    addMarker(markers[i])
+  }
+  //Add Marker Function
+  function addMarker(props){
+    var marker = new google.maps.Marker({
+    position:props.coords,
+    map:map,
+    title:'Hello world',
+    label:props.label_
+  //  icon:props.iconImage
+  });
+  marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+  // check for customicon
+  if(props.iconImage){
+    // set icon image
+    marker.setIcon(props.iconImage);
+  }
+  //check content
+  if(props.content){
+    var infoWindow = new google.maps.InfoWindow({
+      content:props.content
+    });
+
+    marker.addListener('click',function(){
+      infoWindow.open(map, marker);
+    });
+    }
+  }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+}
+
+// Add a marker clusterer to manage the markers.
+var markerCluster = new MarkerClusterer(map, markers,
+    {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*failed to make infoWindow for polygon(1/2)
+function showArrays(event) {
+  // Since this polygon has only one path, we can call getPath() to return the
+  // MVCArray of LatLngs.
+  var vertices = this.getPath();
+
+  var contentString = '<b>Bermuda Triangle polygon</b><br>' +
+      'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+      '<br>';
+
+  // Iterate over the vertices.
+  for (var i =0; i < vertices.getLength(); i++) {
+    var xy = vertices.getAt(i);
+    contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
+        xy.lng();
+  }
+
+  // Replace the info window's content and position.
+  new_infoWindow.setContent(contentString);
+  new_infoWindow.setPosition(event.latLng);
+
+  new_infoWindow.open(map);
+}
+*/
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+  </script>
+
+ {# <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBck8P3dPDs7XxWt7L-OrZJcgQNzHAcrK4&callback=initMap">
+      </script>#}
+ <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+
+
+
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1bASeHMVmipu5s00oWh-xS3vRr8uBaco&callback=initMap">
+      </script>
+</body>
+{% endblock %}
+
+</html>

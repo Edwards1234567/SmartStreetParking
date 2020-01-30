@@ -1,0 +1,44 @@
+
+{% extends "base.html" %}
+
+
+{% block body_contents %}
+
+
+<body>
+
+
+{% block content %}
+
+
+ <div style="margin:0 auto;width:500px;">
+<h2><center>{{ message }}<center></h2>
+    <h2><center>{{ spots }}<center></h2>
+     <form action="{{url_for ('detectphoto')}}" method="post">
+
+    <input  type="submit" value="DETECT"/>
+
+
+    </form>
+     <br/><br/>
+{#
+ <img src="{{ url_for('static',filename="car.jpeg") }}" alt="this is pic">#}
+ <img src="{{ url_for('static',filename= image) }}" width="800" height="600" alt="this is pic">
+ <br/><br/>
+{#
+<iframe src="https://www.google.com/maps/d/embed?mid=17MQgOKrOz3X-XsfrF5UUez7YgEF2LTlW" width="640" height="480"></iframe>
+#}
+
+ <br/><br/>
+  <br/><br/>
+  <br/><br/>
+ </div>
+
+
+{% endblock %}
+
+
+</body>
+{% endblock %}
+
+

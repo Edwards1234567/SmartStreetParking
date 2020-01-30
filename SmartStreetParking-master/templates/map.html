@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+<style>
+
+
+    .main{
+    text-align: center;
+    background-color: #fff;
+    margin: 0 auto;
+    position: relative;
+
+}
+
+</style>
+
+{% block body_contents %}
+
+
+<body text-align="center" >
+
+
+{% block content %}
+
+
+ <div  class="main">
+<h2><center>{{ message }}<center> </h2>
+
+     <br/><br/>
+
+{#
+ <img src="{{ url_for('static',filename="car.jpeg") }}" alt="this is pic">
+#}
+ <br/><br/>
+{#
+<iframe align="left" frameborder="0px" src="" width="270" height="300"  ></iframe>
+#}
+    <iframe style="display: block;margin: 0 auto;" align="middle" src="https://www.google.com/maps/d/embed?mid=17MQgOKrOz3X-XsfrF5UUez7YgEF2LTlW" width="1300" height="975"  ></iframe>
+
+
+ <br/><br/>
+  <br/><br/>
+  <br/><br/>
+ </div>
+
+
+{% endblock %}
+
+
+</body>
+{% endblock %}
+
+
